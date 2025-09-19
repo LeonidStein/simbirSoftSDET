@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public final class LocalWebDriverFactory implements WebDriverFactory {
 
     @Override
-    public WebDriver createDriver(@NonNull String browser) {
+    public WebDriver createDriver(final @NonNull String browser) {
         if (browser.equalsIgnoreCase("chrome")) {
             return createLocalChromeDriver();
         } else {

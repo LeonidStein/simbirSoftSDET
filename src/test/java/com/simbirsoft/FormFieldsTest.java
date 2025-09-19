@@ -9,7 +9,6 @@ import io.qameta.allure.Issue;
 import io.qameta.allure.Link;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -20,22 +19,25 @@ import org.junit.jupiter.api.parallel.ExecutionMode;
 import static com.simbirsoft.constant.UIConst.ALERT_TEXT_AFTER_POSITIVE_SUBMIT;
 import static com.simbirsoft.constant.UIConst.ALERT_TEXT_BEFORE_NEGATIVE_SUBMIT;
 import static com.simbirsoft.constant.UIConst.NAME_FIELD_FILLING_PAGE;
+import static com.simbirsoft.framework.util.Helper.randomFrom1To10;
+import static com.simbirsoft.framework.util.Helper.repeatChar;
 import static com.simbirsoft.framework.util.TestType.Type.NEGATIVE;
 import static com.simbirsoft.framework.util.TestType.Type.POSITIVE;
 import static io.qameta.allure.Allure.step;
 import static io.qameta.allure.SeverityLevel.CRITICAL;
 import static java.lang.String.format;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Epic("UI. Страница FromFields")
+@Epic("UI. Страница Form Fields")
 @Execution(ExecutionMode.CONCURRENT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public final class FormFieldsTest extends BaseTest {
 
     @Description("Заполнение полей Name и Password -> выбор напитков Milk и Coffee ->" +
-            " выбор цвета Yellow -> выбор рандомного варианта на вопрос об автоматизации -> " +
+            " выбор цвета Yellow -> выбор рандомного варианта ответа на вопрос об автоматизации -> " +
             " заполнение полей Email и Message -> нажатие на кнопку Submit." +
             " Проверка текста алерта после нажатия кнопки.")
-    @DisplayName("Проверка полей и форм согласно тестовому заданию из части 1")
+    @DisplayName("Проверка полей, форм и текста алерта согласно тестовому заданию из части 1")
     @Link(name = "Website", url = "https://practice-automation.com/form-fields/")
     @Owner("Бурштейн Леонид Олегович")
     @Severity(CRITICAL)
@@ -59,8 +61,8 @@ public final class FormFieldsTest extends BaseTest {
                 .getAlertText();
 
         step(
-                format("Сравнение текста алерта. Ожидание: '%s', факт: '%s')", expectedAlertText, actualAlertText),
-                () -> Assertions.assertEquals(expectedAlertText, actualAlertText,
+                format("Сравнение текста алерта. Ожидание: '%s', факт: '%s'", expectedAlertText, actualAlertText),
+                () -> assertEquals(expectedAlertText, actualAlertText,
                         "Ожидаемый текст алерта не совпадает с актуальным"));
     }
 
@@ -80,9 +82,9 @@ public final class FormFieldsTest extends BaseTest {
                 .getNameFieldFillingPage();
 
         step(
-                format("Сравнение наименование страницы Form Fields. Ожидание: '%s', факт: '%s')",
+                format("Сравнение наименования страницы Form Fields. Ожидание: '%s', факт: '%s'",
                         expectedNamePage, actualNamePage),
-                () -> Assertions.assertEquals(expectedNamePage, actualNamePage,
+                () -> assertEquals(expectedNamePage, actualNamePage,
                         "Ожидаемое наименование страницы Form Fields не совпадает с текущим"));
     }
 
@@ -99,7 +101,7 @@ public final class FormFieldsTest extends BaseTest {
     @Owner("Бурштейн Леонид Олегович")
     @Severity(CRITICAL)
     @TestType(NEGATIVE)
-    @Issue("BUG-122") // Симуляция таски на исправление бага
+    @Issue("BUG-122") // Симуляция задачи на исправление бага
     @Tag("ui")
     @Test
     public void testNegativeSecondPart() {
@@ -107,13 +109,13 @@ public final class FormFieldsTest extends BaseTest {
         final String expectedAlertText = ALERT_TEXT_BEFORE_NEGATIVE_SUBMIT.getText();
 
         String actualAlertText = new FormFieldsPage(getDriver())
-                .fillNameInput(FakeUserData.getFirstName())
+                .fillNameInput(repeatChar(' ', randomFrom1To10()))
                 .pressSubmitButton()
                 .getAlertText();
 
         step(
-                format("Сравнение текста алерта. Ожидание: '%s', факт: '%s')", expectedAlertText, actualAlertText),
-                () -> Assertions.assertEquals(expectedAlertText, actualAlertText,
+                format("Сравнение текста алерта. Ожидание: '%s', факт: '%s'", expectedAlertText, actualAlertText),
+                () -> assertEquals(expectedAlertText, actualAlertText,
                         "Ожидаемый текст алерта не совпадает с актуальным"));
     }
 }

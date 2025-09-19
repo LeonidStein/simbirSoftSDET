@@ -70,16 +70,14 @@ git clone git@github.com:LeonidStein/simbirSoftSDET.git
 # Тестовое задание
 ### Часть 1
 - **Наименование тестового метода** — testFormAndFieldsFirstPart, отчёт Allure:
-
-![img.png](png/img.png)
+![img.png](png/allure1.png)
 
 ### Часть 2
-
 - **Наименование позитивного тестового метода** — testPositiveSecondPart, отчёт Allure:
-![img_1.png](png/img_1.png)
+![img.png](png/allure2.png)
 
 - **Наименование негативного тестового метода** — testNegativeSecondPart, отчёт Allure:
 - **Примечание: Исходя из ТЗ был придуман кейс с негативным сценарием, т.к., данная страница не продумана для них:**
     При заполнении обязательного поля Name пробелом или пробелами и после нажатии кнопки Submit
     должен всплывать аллерт с сообщением: "Message not received!", но этого не происходит, **поэтому данный тест должен упасть.**
-![img_2.png](png/img_2.png)
+![img.png](png/allure3.png)

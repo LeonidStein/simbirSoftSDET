@@ -17,7 +17,7 @@ import java.util.Random;
 
 import static com.simbirsoft.constant.WaitSecConst.TEN_SECONDS;
 
-public class FormFieldsPage extends BaseTest {
+public final class FormFieldsPage extends BasePage {
 
     public FormFieldsPage(WebDriver driver) {
         super(driver);
@@ -141,7 +141,7 @@ public class FormFieldsPage extends BaseTest {
         return this;
     }
 
-    @Step("UI: Получение текста с алерта после нажатия на кнопку Submit")
+    @Step("UI: Получение текста с алерта")
     public String getAlertText() {
         final WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(TEN_SECONDS.getSeconds()));
         final Alert alert = wait.until(ExpectedConditions.alertIsPresent());
@@ -150,5 +150,4 @@ public class FormFieldsPage extends BaseTest {
 
         return alertText;
     }
-
 }
