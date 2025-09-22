@@ -1,7 +1,5 @@
 package com.simbirsoft.constant;
 
-import org.jspecify.annotations.NonNull;
-
 public enum UIConst {
 
     ALERT_TEXT_AFTER_POSITIVE_SUBMIT("Message received!"),
@@ -10,7 +8,7 @@ public enum UIConst {
 
     private final String text;
 
-    UIConst(@NonNull String text) {
+    UIConst(String text) {
         this.text = text;
     }
 

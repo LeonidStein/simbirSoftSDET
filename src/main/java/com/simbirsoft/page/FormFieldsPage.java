@@ -1,6 +1,7 @@
 package com.simbirsoft.page;
 
 import io.qameta.allure.Step;
+import org.jspecify.annotations.NonNull;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,7 +20,7 @@ import static com.simbirsoft.constant.WaitSecConst.TEN_SECONDS;
 
 public final class FormFieldsPage extends BasePage {
 
-    public FormFieldsPage(WebDriver driver) {
+    public FormFieldsPage(final @NonNull WebDriver driver) {
         super(driver);
     }
 

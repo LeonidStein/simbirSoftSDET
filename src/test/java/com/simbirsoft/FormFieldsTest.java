@@ -9,6 +9,7 @@ import io.qameta.allure.Issue;
 import io.qameta.allure.Link;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
+import io.qameta.allure.TmsLink;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -37,8 +38,9 @@ public final class FormFieldsTest extends BaseTest {
             " выбор цвета Yellow -> выбор рандомного варианта ответа на вопрос об автоматизации -> " +
             " заполнение полей Email и Message -> нажатие на кнопку Submit." +
             " Проверка текста алерта после нажатия кнопки.")
-    @DisplayName("Проверка полей, форм и текста алерта согласно тестовому заданию из части 1")
-    @Link(name = "Website", url = "https://practice-automation.com/form-fields/")
+    @DisplayName("Тестовое задание из части 1")
+    @Link(name = "Website page", url = "https://practice-automation.com/form-fields/")
+    @TmsLink("tests/4")
     @Owner("Бурштейн Леонид Олегович")
     @Severity(CRITICAL)
     @TestType(POSITIVE)
@@ -66,9 +68,10 @@ public final class FormFieldsTest extends BaseTest {
                         "Ожидаемый текст алерта не совпадает с актуальным"));
     }
 
-    @Description("Проверка наименования страницы (headline).")
+    @Description("Проверка корректности отображения наименования страницы (headline).")
     @DisplayName("Позитивный тест согласно тестовому заданию из части 2")
-    @Link(name = "Website", url = "https://practice-automation.com/form-fields/")
+    @Link(name = "Website page", url = "https://practice-automation.com/form-fields/")
+    @TmsLink("tests/5")
     @Owner("Бурштейн Леонид Олегович")
     @Severity(CRITICAL)
     @TestType(POSITIVE)
@@ -89,19 +92,20 @@ public final class FormFieldsTest extends BaseTest {
     }
 
     /*
-    Этот кейс абсолютно вымышленный, т.к., данная страница не продумана для негативных сценариев.
-    Представим, что при заполнении обязательного поля Name пробелом или пробелами
-    и после нажатии кнопки Submit должен всплывать аллерт с сообщением: "Message not received!", но этого не происходит,
-    поэтому данный тест должен упасть.
+    На основании технического задания был разработан тестовый кейс с негативным сценарием.
+    При заполнении обязательного поля Name пробелом (или последовательностью пробелов) и
+    последующем нажатии кнопки Submit должен отображаться алерт с сообщением «Message not received!».
+    Фактически сообщение не соответствует ожидаемому, вследствие чего тест считается не пройденным.
      */
-    @Description("Проверка отправки данных, когда обязательное поле Name содержит пробел или пробелы." +
+    @Issue("BUG-122") // Симуляция задачи на исправление бага
+    @Description("Проверка отправки данных, когда обязательное поле Name содержит пробел(-ы)." +
             " Заполнение обязательного поля Name пробелом/пробелами -> нажатие кнопки Submit")
     @DisplayName("Негативный тест согласно тестовому заданию из части 2")
-    @Link(name = "Website", url = "https://practice-automation.com/form-fields/")
+    @Link(name = "Website page", url = "https://practice-automation.com/form-fields/")
+    @TmsLink("tests/6")
     @Owner("Бурштейн Леонид Олегович")
     @Severity(CRITICAL)
     @TestType(NEGATIVE)
-    @Issue("BUG-122") // Симуляция задачи на исправление бага
     @Tag("ui")
     @Test
     public void testNegativeSecondPart() {

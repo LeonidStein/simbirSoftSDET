@@ -1,6 +1,5 @@
 package com.simbirsoft;
 
-import com.simbirsoft.framework.config.ConfigurationManager;
 import com.simbirsoft.framework.driver.WebDriverFactoryProducer;
 import com.simbirsoft.framework.util.AllureUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -11,10 +10,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
+import static com.simbirsoft.framework.config.ConfigurationManager.config;
+
 @ExtendWith({io.qameta.allure.junit5.AllureJunit5.class})
 public abstract class BaseTest {
 
-    private static final String CHROME_BROWSER = ConfigurationManager.config().browser();
+    private static final String CHROME_BROWSER = config().browser();
+    private static final String URL_FORM_FIELDS_PAGE = config().baseURL() + config().pathToFormFields();
     private final ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
 
     protected final WebDriver getDriver() {
@@ -28,24 +30,30 @@ public abstract class BaseTest {
 
     @BeforeEach()
     public final void setUp() {
-        Allure.step("Запуск тестов на браузере: " + CHROME_BROWSER);
+        Allure.step("Запуск теста на браузере: " + CHROME_BROWSER);
 
         final WebDriver driver = WebDriverFactoryProducer.getFactory().createDriver(CHROME_BROWSER);
         this.threadLocalDriver.set(driver);
 
-        getDriver().get(ConfigurationManager.config().baseUrl());
+        getDriver().get(URL_FORM_FIELDS_PAGE);
+        Allure.step("Открыт URL: " + URL_FORM_FIELDS_PAGE);
     }
 
     @AfterEach
     public final void tearDown() {
-        AllureUtil.attachOSInfo();
-        AllureUtil.attachPageSource(this.threadLocalDriver.get());
-        AllureUtil.attachWindowSize(this.threadLocalDriver.get());
-        AllureUtil.attachScreenshot(this.threadLocalDriver.get());
 
-        if (threadLocalDriver.get() != null) {
-            getDriver().quit();
-            threadLocalDriver.remove();
+        final WebDriver driver = this.threadLocalDriver.get();
+
+        if (driver != null) {
+            AllureUtil.attachOSInfo();
+            AllureUtil.attachPageSource(driver);
+            AllureUtil.attachWindowSize(driver);
+            AllureUtil.attachScreenshot(driver);
+
+            driver.quit();
+            this.threadLocalDriver.remove();
         }
+
+        Allure.step("Браузер " + CHROME_BROWSER + " закрыт");
     }
 }

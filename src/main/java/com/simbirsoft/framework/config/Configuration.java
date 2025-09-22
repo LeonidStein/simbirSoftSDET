@@ -7,7 +7,10 @@ import org.aeonbits.owner.Config;
 public interface Configuration extends Config {
 
     @Key("base.url")
-    String baseUrl();
+    String baseURL();
+
+    @Key("path.to.form_fields")
+    String pathToFormFields();
 
     @Key("browser")
     String browser();
