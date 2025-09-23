@@ -40,6 +40,7 @@ test_task_sdet/
 │  └─ test/
 │     ├─ java/
 │     │  └─ com/simbirsoft/
+│     │     └─ tests
 │     └─ resources/
 │        ├─ allure.properties
 │        └─ junit-platform.properties

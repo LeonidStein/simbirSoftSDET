@@ -1,4 +1,4 @@
-package com.simbirsoft;
+package com.simbirsoft.tests;
 
 import com.simbirsoft.framework.driver.WebDriverFactoryProducer;
 import com.simbirsoft.framework.util.AllureUtil;

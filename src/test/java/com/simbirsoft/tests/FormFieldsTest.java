@@ -1,4 +1,4 @@
-package com.simbirsoft;
+package com.simbirsoft.tests;
 
 import com.simbirsoft.data.FakeUserData;
 import com.simbirsoft.framework.util.TestType;
