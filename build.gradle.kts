@@ -10,8 +10,7 @@ repositories {
     mavenCentral()
 }
 
-val junitPlatformVersion = "5.10.0"
-val junitAggregatorVersion = "5.10.0"
+val junitVersion = "5.10.0"
 val allureVersion = "2.25.0"
 val aspectJVersion = "1.9.21"
 val seleniumJavaVersion = "4.35.0"
@@ -33,8 +32,8 @@ dependencies {
     agent("org.aspectj:aspectjweaver:${aspectJVersion}")
 
     // JUnit5
-    implementation(platform("org.junit:junit-bom:$junitPlatformVersion"))
-    implementation("org.junit.jupiter:junit-jupiter:$junitAggregatorVersion")
+    implementation(platform("org.junit:junit-bom:$junitVersion"))
+    implementation("org.junit.jupiter:junit-jupiter")
 
     // Allure
     implementation(platform("io.qameta.allure:allure-bom:$allureVersion"))
