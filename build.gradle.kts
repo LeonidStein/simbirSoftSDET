@@ -13,7 +13,6 @@ repositories {
 val junitPlatformVersion = "5.10.0"
 val junitAggregatorVersion = "5.10.0"
 val allureVersion = "2.25.0"
-val allureJunit5Version = "2.28.1"
 val aspectJVersion = "1.9.21"
 val seleniumJavaVersion = "4.35.0"
 val webdriverManagerVersion = "6.2.0"
@@ -38,7 +37,6 @@ dependencies {
     implementation("org.junit.jupiter:junit-jupiter:$junitAggregatorVersion")
 
     // Allure
-    implementation("io.qameta.allure:allure-junit5:$allureJunit5Version")
     implementation(platform("io.qameta.allure:allure-bom:$allureVersion"))
     implementation("io.qameta.allure:allure-junit5")
 
