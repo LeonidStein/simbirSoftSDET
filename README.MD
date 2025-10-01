@@ -28,19 +28,20 @@ test_task_sdet/
 │  ├─ main/
 │  │  ├─ java/
 │  │  │  └─ com/simbirsoft/
-│  │  │     ├─ constant/
-│  │  │     ├─ data/
 │  │  │     ├─ framework/
 │  │  │     │  ├─ config/
 │  │  │     │  ├─ driver/
 │  │  │     │  └─ util/
-│  │  │     └─ page/
 │  │  └─ resources/
 │  │     └─ config.properties
 │  └─ test/
 │     ├─ java/
 │     │  └─ com/simbirsoft/
-│     │     └─ tests
+│     │     ├─ constant
+│     │     ├─ data
+│     │     ├─ page
+│     │     ├─ tests
+│     │     └─ util
 │     └─ resources/
 │        ├─ allure.properties
 │        └─ junit-platform.properties

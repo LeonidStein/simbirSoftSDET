@@ -1,4 +1,4 @@
-package com.simbirsoft.framework.util;
+package com.simbirsoft.util;
 
 import java.util.concurrent.ThreadLocalRandom;
 

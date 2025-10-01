@@ -1,7 +1,7 @@
 package com.simbirsoft.tests;
 
 import com.simbirsoft.data.FakeUserData;
-import com.simbirsoft.framework.util.TestType;
+import com.simbirsoft.util.TestType;
 import com.simbirsoft.page.FormFieldsPage;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -20,10 +20,10 @@ import org.junit.jupiter.api.parallel.ExecutionMode;
 import static com.simbirsoft.constant.UIConst.ALERT_TEXT_AFTER_POSITIVE_SUBMIT;
 import static com.simbirsoft.constant.UIConst.ALERT_TEXT_BEFORE_NEGATIVE_SUBMIT;
 import static com.simbirsoft.constant.UIConst.NAME_FIELD_FILLING_PAGE;
-import static com.simbirsoft.framework.util.Helper.randomFrom1To10;
-import static com.simbirsoft.framework.util.Helper.repeatChar;
-import static com.simbirsoft.framework.util.TestType.Type.NEGATIVE;
-import static com.simbirsoft.framework.util.TestType.Type.POSITIVE;
+import static com.simbirsoft.util.Helper.randomFrom1To10;
+import static com.simbirsoft.util.Helper.repeatChar;
+import static com.simbirsoft.util.TestType.Type.NEGATIVE;
+import static com.simbirsoft.util.TestType.Type.POSITIVE;
 import static io.qameta.allure.Allure.step;
 import static io.qameta.allure.SeverityLevel.CRITICAL;
 import static java.lang.String.format;
